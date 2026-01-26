@@ -1,0 +1,56 @@
+﻿body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(150deg, #a57c47, rgb(33, 36, 36, 0.35));
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+} 
+h1{
+    font-family: 'Courier New';
+}
+.LoginDiv {
+    background-color: burlywood;
+    height: 370px;
+    width: 370px;
+    padding: 10px;
+    gap: 15px;
+    border-radius: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.loginForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 15px;
+}
+.Inputlogin {
+    height: 28px;
+    width: 250px;
+    border-radius: 10px;
+    margin-top: 10px;
+    border: none;
+}
+.ButtonDiv{
+    width: 100%;
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+}
+.Button {
+    margin-top: 30px;
+    height: 28px;
+    width: 29%;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+}
+#ButtonForget{
+    margin-top: 20px;
+}
+
+
