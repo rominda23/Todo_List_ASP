@@ -1,0 +1,24 @@
+{
+  "name": "todo_list_asp",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rominda23/Todo_List_ASP.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rominda23/Todo_List_ASP/issues"
+  },
+  "homepage": "https://github.com/rominda23/Todo_List_ASP#readme",
+  "description": "",
+  "devDependencies": {
+    "eslint": "^9.39.2",
+    "typescript": "^5.9.3"
+  }
+}
