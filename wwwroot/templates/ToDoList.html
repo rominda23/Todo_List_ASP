@@ -3,8 +3,31 @@
 <head>
     <meta charset="utf-8" />
     <title></title>
+    <link rel="stylesheet" href="/CSS/ToDoList.css" />
 </head>
 <body>
+    <div class="ToDoListDiv">
+        <h1>My To-Do List</h1>
+        <div class="InputDiv">
+            <input class="InputTask" id="InputTask" type="text" placeholder="write your tasks here..." required/>
+            <button class="Button" id="AddButton">Add Task</button>
+        </div>
+
+        <div class="TasksDiv">
+            <div class="TaskStatus">
+                <a href="" class="status">Today</a>
+                <p>|</p>
+                <a href="" class="status">Pending</a>
+                <p>|</p>
+                <a href="" class="status">Overdue</a>
+            </div>
+        </div>
+
+        <button class="Button" id="LogoutButton">Logout</button>
+
+
+        <script src="/TS/ToDoList.js"></script>
+    </div>
 
 </body>
 </html>

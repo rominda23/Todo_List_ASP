@@ -1,2 +1,107 @@
 ﻿body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(150deg, #a57c47, rgb(33, 36, 36, 0.35));
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
 }
+
+h1 {
+    font-family: 'Courier New';
+}
+
+/*h1::after {
+    content: "";
+    display: block;
+    width: 100%; 
+    max-width: 200px; 
+    min-width: 120px; 
+    height: 4px;
+    background: #000;
+    margin: 18px auto 0;
+}*/
+
+.ToDoListDiv {
+    background-color: burlywood;
+    height: 80%;
+    width: 65%;
+    padding: 10px;
+    gap: 15px;
+    border-radius: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 10px 35px rgba(0,0,0,0.25);
+    position: relative;
+    overflow: hidden;
+}
+
+.InputDiv {
+    display: flex;
+    width: 100vh;
+    justify-content: center;
+    gap: 20px;
+   
+    
+}
+.InputTask {
+    height: 35px;
+    width: 38%;
+    border: none;
+    cursor: pointer;
+    background: rgb(255, 255, 255, 0.17);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 20px;
+    /*border-radius: 40%;*/
+}
+
+.InputTask::placeholder {
+    padding: 5px;
+}
+
+.Button {
+    border-radius: 15px;
+    border: none;
+    cursor: pointer;
+    height: 35px;
+    width: 10%;
+}
+
+.TasksDiv {
+    background: linear-gradient(150deg, #b0844b99, rgb(33, 36, 36, 0.35));
+    display: flex;
+    height: 70%;
+    width: 80%;
+    margin-top: 30px;
+    border-radius: 20px;
+    justify-content: center;
+}
+
+.TaskStatus {
+    
+    display: flex;
+    height: 10%;
+    width: 30%;
+    margin-top: 15px;
+    border-radius: 20px;
+    justify-content: center;
+    align-items:center;
+}
+.status{
+    font-size: 20px;
+    padding: 15px;
+    text-decoration: none;
+    
+    
+}
+
+   
+
+        
