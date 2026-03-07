@@ -10,5 +10,6 @@ namespace Todo_List_ASP.Data
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
         public DbSet<TodoItem> TodoItems => Set<TodoItem>();
+        public DbSet<User> Users { get; set; }
     }
 }
