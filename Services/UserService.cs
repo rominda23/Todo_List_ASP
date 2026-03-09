@@ -1,29 +1,24 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Todo_List_ASP.Data;
-using Todo_List_ASP.DTOs;
+﻿using Todo_List_ASP.DTOs;
 using Todo_List_ASP.Models;
+using Todo_List_ASP.Repositories;
 
 namespace Todo_List_ASP.Services
 {
     public class UserService : IUserService
     {
-        private readonly AppDbContext _db;
+        private readonly IUserRepository _repo;
 
-        public UserService(AppDbContext db)
+        public UserService(IUserRepository repo)
         {
-            _db = db;
+            _repo = repo;
         }
 
         public async Task<User> CreateUserAsync(CreateUserRequest request)
         {
-            // Check if username already exists
-            var existingUser = await _db.Users
-                .FirstOrDefaultAsync(u => u.Username == request.Username);
+            var existing = await _repo.GetByUsernameAsync(request.Username);
 
-            if (existingUser != null)
-            {
+            if (existing != null)
                 throw new Exception("Username already exists.");
-            }
 
             var user = new User
             {
@@ -32,10 +27,7 @@ namespace Todo_List_ASP.Services
                 Password = request.Password
             };
 
-            _db.Users.Add(user);
-            await _db.SaveChangesAsync();
-
-            return user;
+            return await _repo.AddAsync(user);
         }
     }
 }
