@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 using Todo_List_ASP.Data;
 using Todo_List_ASP.Models; //call the namespace of your Model(Getter & Setter) to use it here in Controller
 using Todo_List_ASP;
@@ -55,6 +56,7 @@ namespace Todo_List_ASP.Controllers
             _service = service;
         }
 
+        [Authorize]
         [HttpGet]
         public async Task<ActionResult<List<TodoItem>>> Get()
         {
@@ -62,7 +64,7 @@ namespace Todo_List_ASP.Controllers
             return Ok(items);
         }
 
-       
+        [Authorize]
         [HttpPost]
         public async Task<ActionResult<TodoItem>> Post([FromBody] CreateTaskRequest request)
         {

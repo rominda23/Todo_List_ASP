@@ -1,6 +1,15 @@
+﻿const token = localStorage.getItem("token");
+
+// Guard: redirect to login if no token
+if (!token) {
+    window.location.href = "/templates/Login.html";
+}
+
 const logOutBtn = document.getElementById("LogoutButton") as HTMLButtonElement | null;
 
 logOutBtn?.addEventListener("click", () => {
+    localStorage.removeItem("token");       // ← add this!
+    localStorage.removeItem("username");    // ← and this
     window.location.href = "/templates/Login.html";
 });
 
@@ -11,11 +20,25 @@ type Task = {
     inputTask: string;
 };
 
+// Update your api() helper to attach the token
 async function api<T>(url: string, options: RequestInit = {}): Promise<T> {
+    const token = localStorage.getItem("token");
+
     const res = await fetch(url, {
-        headers: { "Content-Type": "application/json", ...(options.headers ?? {}) },
+        headers: {
+            "Content-Type": "application/json",
+            ...(token ? { "Authorization": `Bearer ${token}` } : {}),
+            ...(options.headers ?? {})
+        },
         ...options
     });
+
+    if (res.status === 401) {
+        // Token expired or invalid — kick back to login
+        localStorage.removeItem("token");
+        window.location.href = "/templates/Login.html";
+        throw new Error("Unauthorized");
+    }
 
     if (!res.ok) throw new Error(await res.text());
     return (await res.json()) as T;
@@ -27,6 +50,7 @@ const TASKS_URL = "/api/todo";
 function initTodoPage() {
     const taskInput = document.getElementById("InputTask") as HTMLInputElement | null;
     const addBtn = document.getElementById("AddButton") as HTMLButtonElement | null;
+    
 
     if (!taskInput || !addBtn) return;
 

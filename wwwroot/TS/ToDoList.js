@@ -1,13 +1,32 @@
 "use strict";
+const token = localStorage.getItem("token");
+// Guard: redirect to login if no token
+if (!token) {
+    window.location.href = "/templates/Login.html";
+}
 const logOutBtn = document.getElementById("LogoutButton");
 logOutBtn?.addEventListener("click", () => {
+    localStorage.removeItem("token"); // ← add this!
+    localStorage.removeItem("username"); // ← and this
     window.location.href = "/templates/Login.html";
 });
+// Update your api() helper to attach the token
 async function api(url, options = {}) {
+    const token = localStorage.getItem("token");
     const res = await fetch(url, {
-        headers: { "Content-Type": "application/json", ...(options.headers ?? {}) },
+        headers: {
+            "Content-Type": "application/json",
+            ...(token ? { "Authorization": `Bearer ${token}` } : {}),
+            ...(options.headers ?? {})
+        },
         ...options
     });
+    if (res.status === 401) {
+        // Token expired or invalid — kick back to login
+        localStorage.removeItem("token");
+        window.location.href = "/templates/Login.html";
+        throw new Error("Unauthorized");
+    }
     if (!res.ok)
         throw new Error(await res.text());
     return (await res.json());
