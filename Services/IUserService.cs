@@ -6,5 +6,6 @@ namespace Todo_List_ASP.Services
     public interface IUserService
     {
         Task<User> CreateUserAsync(CreateUserRequest request);
+        Task<LoginResponse> LoginAsync(LoginRequest request);
     }
 }

@@ -37,5 +37,23 @@ namespace Todo_List_ASP.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        [HttpPost("login")]
+        public async Task<ActionResult<LoginResponse>> Login([FromBody] LoginRequest request)
+        {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(request.Username) ||
+                    string.IsNullOrWhiteSpace(request.Password))
+                    return BadRequest("All fields are required.");
+
+                var response = await _service.LoginAsync(request);
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                return Unauthorized(ex.Message); // 401, not 400
+            }
+        }
     }
 }
