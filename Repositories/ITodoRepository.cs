@@ -3,8 +3,8 @@
 namespace Todo_List_ASP.Repositories
 {
     public interface ITodoRepository
-    {
-        Task<List<TodoItem>> GetAllAsync();
+    { 
         Task<TodoItem> AddAsync(TodoItem item);
+        Task<List<TodoItem>> GetAllByUserAsync(int userId);  // add this
     }
 }

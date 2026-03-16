@@ -42,6 +42,8 @@ builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<ITodoService, TodoService>();
 builder.Services.AddScoped<IUserService, UserService>();
 
+builder.Services.AddHttpContextAccessor();
+
 var app = builder.Build();
 
 // And AFTER app = builder.Build(), before app.UseAuthorization():

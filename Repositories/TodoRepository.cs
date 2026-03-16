@@ -13,9 +13,11 @@ namespace Todo_List_ASP.Repositories
             _db = db;
         }
 
-        public async Task<List<TodoItem>> GetAllAsync()
+        
+        public async Task<List<TodoItem>> GetAllByUserAsync(int userId)
         {
             return await _db.TodoItems
+                            .Where(t => t.UserId == userId)
                             .OrderBy(t => t.Id)
                             .ToListAsync();
         }
