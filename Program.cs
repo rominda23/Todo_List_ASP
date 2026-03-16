@@ -46,10 +46,6 @@ builder.Services.AddHttpContextAccessor();
 
 var app = builder.Build();
 
-// And AFTER app = builder.Build(), before app.UseAuthorization():
-app.UseAuthentication(); // ← ADD THIS (must be before UseAuthorization)
-app.UseAuthorization();
-
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -61,7 +57,7 @@ app.UseHttpsRedirection();
 
 //app.UseDefaultFiles();
 app.UseStaticFiles();
-
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
