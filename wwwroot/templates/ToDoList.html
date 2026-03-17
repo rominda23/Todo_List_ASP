@@ -8,18 +8,20 @@
 <body>
     <div class="ToDoListDiv">
         <h1>My To-Do List</h1>
+
         <div class="InputDiv">
             <input class="InputTask" id="InputTask" type="text" placeholder="write your tasks here..." required/>
             <button class="Button" id="AddButton">Add Task</button>
         </div>
 
         <div class="TasksDiv">
+
             <div class="TaskStatus">
-                <a href="" class="status">To-Do</a>
-                <p>|</p>
-                <a href="" class="status">Completed</a>
-                <p>|</p>
-                <a href="" class="status">Recently Deleted</a>
+                <a class="status active" data-tab="todo">To-Do</a>
+                <span class="tab-separator">|</span>
+                <a class="status" data-tab="completed">Completed</a>
+                <span class="tab-separator">|</span>
+                <a class="status" data-tab="deleted">Recently Deleted</a>
             </div>
 
             <div id="taskList">

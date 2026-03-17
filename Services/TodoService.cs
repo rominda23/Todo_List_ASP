@@ -36,7 +36,8 @@ namespace Todo_List_ASP.Services
             var task = new TodoItem
             {
                 InputTask = request.InputTask,
-                UserId = GetUserId()             // stamp the owner
+                UserId = GetUserId(),            // stamp the owner
+                CreatedAt = DateTime.Now
             };
             return await _repo.AddAsync(task);
         }

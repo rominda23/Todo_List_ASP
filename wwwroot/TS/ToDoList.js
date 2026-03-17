@@ -79,10 +79,32 @@ function renderTasks(tasks) {
     const list = document.getElementById("taskUl");
     if (!list)
         return;
-    list.innerHTML = ""; // clear
+    list.innerHTML = "";
     for (const t of tasks) {
         const li = document.createElement("li");
-        li.textContent = t.inputTask;
+        const span = document.createElement("span");
+        span.className = "task-text";
+        span.textContent = t.inputTask;
+        const date = document.createElement("span");
+        date.className = "task-date";
+        date.textContent = new Date(t.createdAt).toLocaleDateString("en-US", {
+            month: "short", day: "numeric", year: "numeric"
+        });
+        const actions = document.createElement("div");
+        actions.className = "task-actions";
+        const completeBtn = document.createElement("button");
+        completeBtn.className = "task-btn complete-btn";
+        completeBtn.textContent = "✓";
+        completeBtn.title = "Mark complete";
+        const deleteBtn = document.createElement("button");
+        deleteBtn.className = "task-btn delete-btn";
+        deleteBtn.textContent = "✕";
+        deleteBtn.title = "Delete task";
+        actions.appendChild(completeBtn);
+        actions.appendChild(deleteBtn);
+        li.appendChild(span);
+        li.appendChild(date);
+        li.appendChild(actions);
         list.appendChild(li);
     }
 }
